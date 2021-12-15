@@ -1,16 +1,33 @@
+import { useState } from "react";
+
 function App() {
   
-  const pendingTasks = 7;
-  const tasks = ["Do dishes", "Buy milk", "Walk the dog"];
+  const [title, setTitle] = useState("")
+  const [tasks, setTasks] = useState([])
+  const pendingTasks = tasks.length;
 
   return (
     <div>
       <h1>Task Manager</h1>
       <p>Pending Tasks: {pendingTasks}</p>
-      <form>
-        <input type="text" />
-        <button type="submit">Add</button>
-      </form>
+      <div>
+        <input 
+        value={title} 
+        onChange={(event) => { 
+        setTitle(event.target.value);
+      }}
+        type="text" 
+        />
+
+        <button
+        onClick={() => {
+          setTasks([title, ...tasks]);
+          setTitle("");
+        }}
+        >
+          Add</button>
+
+      </div>
       <ul>
         {tasks.map(task =>{
           return <li>{task}</li>
