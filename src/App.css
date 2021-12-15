@@ -3,4 +3,5 @@
   max-height: 250px;
   overflow-y: scroll;
   list-style: none;
+  border: 3px solid gray;
 }
