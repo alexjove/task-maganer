@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -6,6 +6,15 @@ function App() {
   const [title, setTitle] = useState("")
   const [tasks, setTasks] = useState([])
   const pendingTasks = tasks.length;
+
+  useEffect(() => {
+    document.title = pendingTasks + "task remaining";
+      }, [pendingTasks]);
+
+      useEffect(() => {
+        if (pendingTasks === 0) {
+          alert("Congrats");
+      }}, [pendingTasks]);
 
   return (
     <div>
