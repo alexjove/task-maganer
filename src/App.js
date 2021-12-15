@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   
@@ -25,12 +26,20 @@ function App() {
           setTitle("");
         }}
         >
-          Add</button>
+          Add task</button>
 
       </div>
-      <ul>
-        {tasks.map(task =>{
-          return <li>{task}</li>
+      <ul className="task-list">
+        {tasks.map((task) => {
+          return (
+            <li
+              onClick={() => {
+                setTasks(tasks.filter((t) => t !== task));
+              }}
+            >
+              {task}
+            </li>
+          );
         })}
       </ul>
     </div>
